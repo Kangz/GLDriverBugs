@@ -36,5 +36,12 @@ add_executable(uniform_order ${SRC_DIR}/uniform_order/Main.cpp)
 target_link_libraries(uniform_order utils)
 set_target_properties(uniform_order PROPERTIES
     CXX_STANDARD 14
-    CXX_STANDARD_REQUIRED ON    
+    CXX_STANDARD_REQUIRED ON
+)
+
+add_executable(gl_secondary_frag_data ${SRC_DIR}/gl_secondary_frag_data/Main.cpp)
+target_link_libraries(gl_secondary_frag_data utils)
+set_target_properties(gl_secondary_frag_data PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
 )
