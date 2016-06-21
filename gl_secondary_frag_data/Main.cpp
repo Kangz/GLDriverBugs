@@ -8,7 +8,8 @@ class UniformOrder: public GLFWApp {
         void Init(GLFWwindow*) override {
 
             const std::string vs =
-                R"(in vec4 a_position;
+                R"(#version 100
+                attribute vec4 a_position;
                 void main(){
                     gl_Position = a_position;
                 })";
@@ -20,6 +21,10 @@ class UniformOrder: public GLFWApp {
                    uniform vec4 src;
                    uniform vec4 src1;
                    void main() {
+                       // Works
+                       // gl_FragColor = src;
+                       // gl_SecondaryFragColorEXT = src1;
+                       // Doesn't on Intel Mesa
                        gl_FragData[0] = src;
                        gl_SecondaryFragDataEXT[0] = src1;
                    })";
