@@ -45,3 +45,10 @@ set_target_properties(gl_secondary_frag_data PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+add_executable(uniform_for_local_variable ${SRC_DIR}/uniform_for_local_variable/Main.cpp)
+target_link_libraries(uniform_for_local_variable utils)
+set_target_properties(uniform_for_local_variable PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)

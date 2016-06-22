@@ -3,7 +3,7 @@
 #include <string>
 #include "utils/Shader.h"
 
-class UniformOrder: public GLFWApp {
+class SecondaryFragData: public GLFWApp {
     public:
         void Init(GLFWwindow*) override {
 
@@ -69,5 +69,5 @@ class UniformOrder: public GLFWApp {
 };
 
 int main(int argc, const char** argv) {
-    return GLFWApp::Run(new UniformOrder);
+    return GLFWApp::Run(new SecondaryFragData);
 }
