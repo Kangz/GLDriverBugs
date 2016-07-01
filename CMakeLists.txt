@@ -59,3 +59,10 @@ set_target_properties(blend_func_extended_array PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+add_executable(fbo_completness_caching ${SRC_DIR}/fbo_completness_caching/Main.cpp)
+target_link_libraries(fbo_completness_caching utils)
+set_target_properties(fbo_completness_caching PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)

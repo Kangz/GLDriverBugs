@@ -9,6 +9,9 @@ namespace {
         std::cerr << "GLFW Error " << error << ": " << description << std::endl;
     }
 
+    void APIENTRY OnKHRDebug(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
+        std::cerr << "KHR_debug says: " << message << std::endl;
+    }
 }
 
 int GLFWApp::Run(GLFWApp* app_) {
@@ -43,6 +46,13 @@ int GLFWApp::Run(GLFWApp* app_, const InitParams& params) {
 
     if(!gladLoadGL()) {
         return 1;
+    }
+
+    std::string extensions = reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS));
+    if (extensions.find("GL_KHR_debug") != std::string::npos) {
+        glEnable(GL_DEBUG_OUTPUT);
+        glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+        glDebugMessageCallback(OnKHRDebug, nullptr);
     }
 
     app->Init(window);
