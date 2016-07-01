@@ -35,6 +35,10 @@ GLuint CompileShader(GLenum type, const std::string& source) {
 }
 
 GLuint CompileProgram(const std::string& vsSource, const std::string& fsSource) {
+    CompileProgramStuffBeforeLink(vsSource, fsSource, [](GLuint){});
+}
+
+GLuint CompileProgramStuffBeforeLink(const std::string& vsSource, const std::string& fsSource, std::function<void (GLuint)> todo) {
     GLuint program = glCreateProgram();
 
     GLuint vs = CompileShader(GL_VERTEX_SHADER, vsSource);
@@ -52,6 +56,8 @@ GLuint CompileProgram(const std::string& vsSource, const std::string& fsSource) 
 
     glAttachShader(program, fs);
     glDeleteShader(fs);
+
+    todo(program);
 
     glLinkProgram(program);
 

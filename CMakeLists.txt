@@ -52,3 +52,10 @@ set_target_properties(uniform_for_local_variable PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+add_executable(blend_func_extended_array ${SRC_DIR}/blend_func_extended_array/Main.cpp)
+target_link_libraries(blend_func_extended_array utils)
+set_target_properties(blend_func_extended_array PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
