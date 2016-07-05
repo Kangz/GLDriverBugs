@@ -35,7 +35,7 @@ GLuint CompileShader(GLenum type, const std::string& source) {
 }
 
 GLuint CompileProgram(const std::string& vsSource, const std::string& fsSource) {
-    CompileProgramStuffBeforeLink(vsSource, fsSource, [](GLuint){});
+    return CompileProgramStuffBeforeLink(vsSource, fsSource, [](GLuint){});
 }
 
 GLuint CompileProgramStuffBeforeLink(const std::string& vsSource, const std::string& fsSource, std::function<void (GLuint)> todo) {

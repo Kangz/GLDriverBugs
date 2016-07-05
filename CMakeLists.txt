@@ -66,3 +66,10 @@ set_target_properties(fbo_completness_caching PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+add_executable(frag_depth_clamp_32f_depth ${SRC_DIR}/frag_depth_clamp_32f_depth/Main.cpp)
+target_link_libraries(frag_depth_clamp_32f_depth utils)
+set_target_properties(frag_depth_clamp_32f_depth PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)

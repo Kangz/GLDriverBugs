@@ -16,7 +16,7 @@ namespace {
 
 int GLFWApp::Run(GLFWApp* app_) {
     InitParams params;
-    Run(app_, params);
+    return Run(app_, params);
 }
 
 int GLFWApp::Run(GLFWApp* app_, const InitParams& params) {
