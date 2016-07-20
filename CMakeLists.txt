@@ -73,3 +73,10 @@ set_target_properties(frag_depth_clamp_32f_depth PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+add_executable(texture_cube_specification_order ${SRC_DIR}/texture_cube_specification_order/Main.cpp)
+target_link_libraries(texture_cube_specification_order utils)
+set_target_properties(texture_cube_specification_order PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
