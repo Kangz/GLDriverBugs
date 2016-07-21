@@ -15,22 +15,18 @@ class UniformOrder: public GLFWApp {
                     gl_Position = a_position;
                 })";
 
-            // Writes a depth gradient going from depthBounds.x to depthBounds.y
+            // Writes a fixed detph value and green.
             // Section 15.2.3 of the GL 4.5 specification says that conversion is not
             // done but clamping is so the output depth should be in [0.0, 1.0]
             const std::string depthFs =
                 R"(#version 450
                 layout(location = 0) out vec4 fragColor;
-                uniform vec2 depthBounds;
                 void main(){
-                    float f = (gl_FragCoord.x / 640.0 + gl_FragCoord.y / 480.0) / 2.0;
-                    gl_FragDepth = depthBounds[0] + f * (depthBounds[1] - depthBounds[0]);
+                    gl_FragDepth = 42.0f; // Works with 1.0f
                     fragColor = vec4(0.0, 1.0, 0.0, 1.0);
                 })";
 
             mDepthProgram = CompileProgram(vs, depthFs);
-            mDepthBounds = glGetUniformLocation(mDepthProgram, "depthBounds");
-            assert(mDepthBounds != -1);
 
             glGenTextures(1, &mColorTexture);
             glBindTexture(GL_TEXTURE_2D, mColorTexture);
@@ -74,19 +70,9 @@ class UniformOrder: public GLFWApp {
             glClearDepth(1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+            glDepthFunc(GL_EQUAL);
             glEnable(GL_DEPTH_TEST);
 
-            // Render a first depth gradient
-            glDepthFunc(GL_ALWAYS);
-            glUniform2f(mDepthBounds, -1.0, 2.0);
-            glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-            glClear(GL_COLOR_BUFFER_BIT);
-
-            // Render a different gradient, it should match the depth buffer when it is clamped
-            // but for some reason isn't
-            glDepthFunc(GL_EQUAL);
-            glUniform2f(mDepthBounds, -0.5, 3.0);
             glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
             glBindFramebuffer(GL_READ_FRAMEBUFFER, mFramebuffer);
