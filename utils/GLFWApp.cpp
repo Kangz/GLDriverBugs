@@ -49,6 +49,7 @@ int GLFWApp::Run(GLFWApp* app_, const InitParams& params) {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, params.glMajor);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, params.glMinor);
         if (params.coreProfile) {
+            glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         }
     }

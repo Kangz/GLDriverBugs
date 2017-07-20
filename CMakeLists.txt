@@ -80,3 +80,10 @@ set_target_properties(texture_cube_specification_order PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+add_executable(map_buffer_range_gpu_hang ${SRC_DIR}/map_buffer_range_gpu_hang/Main.cpp)
+target_link_libraries(map_buffer_range_gpu_hang utils)
+set_target_properties(map_buffer_range_gpu_hang PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
