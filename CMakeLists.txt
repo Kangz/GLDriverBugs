@@ -10,14 +10,14 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 add_subdirectory(${SRC_DIR}/external/glfw)
 
-add_library(glad SHARED
+add_library(glad STATIC
     ${SRC_DIR}/external/glad/src/glad.c
     ${SRC_DIR}/external/glad/include/KHR/khrplatform.h
     ${SRC_DIR}/external/glad/include/glad/glad.h
 )
 target_include_directories(glad PUBLIC ${SRC_DIR}/external/glad/include)
 
-add_library(utils SHARED
+add_library(utils STATIC
     ${SRC_DIR}/utils/GLFWApp.cpp
     ${SRC_DIR}/utils/GLFWApp.h
     ${SRC_DIR}/utils/GLFW.h
