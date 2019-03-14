@@ -87,3 +87,11 @@ set_target_properties(map_buffer_range_gpu_hang PROPERTIES
     CXX_STANDARD 14
     CXX_STANDARD_REQUIRED ON
 )
+
+add_executable(blitframebuffer_overflow ${SRC_DIR}/blitframebuffer_overflow/Main.cpp)
+target_link_libraries(blitframebuffer_overflow utils)
+set_target_properties(blitframebuffer_overflow PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+    )
+target_compile_definitions(blitframebuffer_overflow PRIVATE NOMINMAX)
